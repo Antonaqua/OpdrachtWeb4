@@ -4,6 +4,6 @@
 Cards: 
 <ul>
   <li *ngFor="let card of cards">
-    {{card}}
+    <app-card [name]="card"></app-card>
   </li>
 </ul>

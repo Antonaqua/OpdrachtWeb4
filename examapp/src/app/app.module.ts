@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DeckComponent } from './deck/deck.component';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DeckComponent
+    DeckComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule
