@@ -1,8 +1,12 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-</div>
-<div>
-  <app-deck></app-deck>
+<div class="ui container">
+  <div class="ui basic segment">
+    <app-add-deck (newDeck)="newDeckAdded($event)">
+    </app-add-deck>
+  </div>
+  <div class="ui segment">
+    <div class="ui cards">
+      <app-deck *ngFor='let localdeck of _decks' 
+        [deck]='localdeck'></app-deck>
+    </div>
+  </div>
 </div>

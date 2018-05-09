@@ -1,9 +1,11 @@
+<div class="ui segment">
 <p>
-  Deck named {{name}}!
-</p>
-Cards: 
-<ul>
-  <li *ngFor="let card of cards">
-    <app-card [name]="card"></app-card>
-  </li>
-</ul>
+    deck for {{deck.name}}
+  </p>
+  cards:
+  <ul>
+    <li *ngFor="let card of deck.cards">
+      <app-card [name]="card"></app-card>
+    </li>
+  </ul>
+</div>

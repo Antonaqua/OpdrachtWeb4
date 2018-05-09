@@ -1,19 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {Deck} from './deck.model';
 
 @Component({
   selector: 'app-deck',
   templateUrl: './deck.component.html',
   styleUrls: ['./deck.component.css']
 })
-export class DeckComponent implements OnInit {
-  name: string;
-  cards: string[];
+export class DeckComponent implements OnInit{
+  @Input() public deck: Deck;
+
   constructor() { 
-    this.name = "RDW";
-    this.cards = ["Ramunap Ruins", "Ramunap Ruins", "Ramunap Ruins", "Ramunap Ruins", "Sunscorched Desert"];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
