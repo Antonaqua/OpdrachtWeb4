@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Deck } from './deck/deck.model';
+import { ReactiveFormsModule} from '@angular/forms';
 
 @Pipe({
   name: 'deckFilter'

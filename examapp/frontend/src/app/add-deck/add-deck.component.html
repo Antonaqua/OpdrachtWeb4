@@ -1,10 +1,9 @@
-<div class="ui form">
-    <h3 class="ui header">Add deck</h3>
-    <div class="field">
-      <label for="name">Name:</label>
-      <input id="name" name="name" #newdeckname>
-    </div>
-    <button (click)="addDeck(newdeckname)" class="ui positive right button">
-      add deck
-    </button>
+<form [formGroup]='deck'>
+  <h3>add deck</h3>
+  <div>
+    <label for='name_id'>name:</label>
+    <input type='text' id='name_id' formControlName='name'>
   </div>
+  <button >add</button>
+</form> 
+REMOVE {{ deck.value | json }}

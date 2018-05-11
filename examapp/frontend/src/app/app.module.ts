@@ -8,6 +8,7 @@ import { DeckComponent } from './deck/deck.component';
 import { CardComponent } from './card/card.component';
 import { AddDeckComponent } from './add-deck/add-deck.component';
 import { DeckFilterPipe } from './deck-filter.pipe';
+import { ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { DeckFilterPipe } from './deck-filter.pipe';
     DeckFilterPipe
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

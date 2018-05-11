@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Deck } from '../deck/deck.model';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-deck',
@@ -11,7 +12,12 @@ export class AddDeckComponent implements OnInit {
 
   constructor() { }
 
+  private deck: FormGroup;
+
   ngOnInit() {
+    this.deck = new FormGroup({
+      name: new FormControl('RDW')
+    })
   }
 
   addDeck(newDeckName: HTMLInputElement) : boolean {
