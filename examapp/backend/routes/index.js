@@ -12,4 +12,15 @@ router.get('/API/decks/', function(req, res, next) {
   });
 });
 
+router.post('/API/decks/', function(req, res, next) {
+  console.log(req.body);
+  let recipe = new Deck(req.body);
+  deck.save(function(err, rec) {
+    if (err) {
+      return next(err);
+    }
+    res.json(rec);
+  });
+});
+
 module.exports = router;
