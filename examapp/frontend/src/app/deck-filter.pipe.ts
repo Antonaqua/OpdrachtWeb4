@@ -4,7 +4,7 @@ import { Deck } from './deck/deck.model';
 @Pipe({
   name: 'deckFilter'
 })
-export class RecipeFilterPipe implements PipeTransform {
+export class DeckFilterPipe implements PipeTransform {
   transform(decks: Deck[], name: string): Deck[] {
     if (!name || name.length === 0) {
       return decks;
