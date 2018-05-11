@@ -25,8 +25,8 @@ export class DeckDataService {
     return this._decks;
   }
 
-  addNewDeck(deck) {
-    this._decks.push(deck);
+  addNewDeck(deck : Deck) {
+    this._decks = [...this._decks, deck];
   }
 
 }

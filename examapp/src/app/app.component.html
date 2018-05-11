@@ -1,12 +1,20 @@
 <div class="ui container">
-  <div class="ui basic segment">
-    <app-add-deck (newDeck)="newDeckAdded($event)">
-    </app-add-deck>
-  </div>
-  <div class="ui segment">
-    <div class="ui cards">
-      <app-deck *ngFor='let localdeck of decks' 
-        [deck]='localdeck'></app-deck>
+    <div class="ui basic segment">
+      <app-add-deck (newDeck)='newDeckAdded($event)'></app-add-deck>
+    </div>
+    <div class="ui segment">
+      <div class="ui basic segment">
+        <div class="ui two fields">
+          <div class="ui input">
+            <input (keyup)='filterDeckName$.next($event.target.value)' type='text' id='filter' name='filter' placeholder='filter deck name...'
+              #filter>
+          </div>
+        </div>
+      </div>
+      <div class="ui basic segment">
+        <div class="ui cards">
+          <app-deck *ngFor='let localDeck of decks | deckFilter:filterDeck$.getValue()' [deck]='localDeck'></app-deck>
+        </div>
+      </div>
     </div>
   </div>
-</div>

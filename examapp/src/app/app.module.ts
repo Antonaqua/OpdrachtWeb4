@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DeckComponent } from './deck/deck.component';
 import { CardComponent } from './card/card.component';
 import { AddDeckComponent } from './add-deck/add-deck.component';
+import { DeckFilterPipe } from './deck-filter.pipe';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { AddDeckComponent } from './add-deck/add-deck.component';
     AppComponent,
     DeckComponent,
     CardComponent,
-    AddDeckComponent
+    AddDeckComponent,
+    DeckFilterPipe
   ],
   imports: [
     BrowserModule

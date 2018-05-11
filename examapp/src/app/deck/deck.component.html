@@ -1,11 +1,13 @@
-<div class="ui segment">
-<p>
-    deck for {{deck.name}}
-  </p>
-  cards:
-  <ul>
-    <li *ngFor="let card of deck.cards">
-      <app-card [name]="card"></app-card>
-    </li>
-  </ul>
-</div>
+<div class="ui card">
+    <div class="content">
+      <a class="header">{{ deck.name }}</a>
+      <div class="meta">
+        <span class="date">added on {{deck.dateAdded | date}}</span>
+      </div>
+      <ul class="ui list">
+        <li *ngFor='let card of deck.cards'>
+          <app-card [name]='card'></app-card>
+        </li>
+      </ul>
+    </div>
+  </div>

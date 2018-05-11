@@ -1,11 +1,10 @@
-<div class="ui large form segment">
-  <h3 class="ui header">Add Deck</h3>
-  <div class="field">
-    <label for="name">Name:</label> 
-    <input id="name" name="name" #newdeckname>
+<div class="ui form">
+    <h3 class="ui header">Add deck</h3>
+    <div class="field">
+      <label for="name">Name:</label>
+      <input id="name" name="name" #newdeckname>
+    </div>
+    <button (click)="addDeck(newdeckname)" class="ui positive right button">
+      add deck
+    </button>
   </div>
-  <button (click)="addDeck(newdeckname)"
-  	    class="ui positive right floated button">
-    add deck 
-  </button>
-</div>
