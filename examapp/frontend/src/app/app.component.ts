@@ -1,5 +1,5 @@
 import { Deck } from './deck/deck.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DeckDataService } from './deck-data.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { distinctUntilChanged } from 'rxjs/operators';
@@ -14,7 +14,8 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./app.component.css'],
   providers: [DeckDataService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  private _decks : Deck[];
   public filterDeckName$ = new BehaviorSubject<string>('');
   public filterDeck$ = new BehaviorSubject<string>('');
 
@@ -27,11 +28,17 @@ export class AppComponent {
       .subscribe(val => this.filterDeck$.next(val));
   }
 
-  get decks(): Deck[] {
-    return this._deckDataService.decks;
+  get decks() {
+    return this.decks;
   }
 
   newDeckAdded(deck) {
-    this._deckDataService.addNewDeck(deck);
+    this._deckDataService.addNewDeck(deck).subscribe((deck: Deck) => this._decks.push(deck));
+  }
+
+  ngOnInit() : void{
+    this._deckDataService.decks.subscribe(
+      decks => (this._decks = decks)
+    );
   }
 }

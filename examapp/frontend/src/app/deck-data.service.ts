@@ -1,32 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Deck} from './deck/deck.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class DeckDataService {
-  private _decks = new Array<Deck>();
+  private readonly _appUrl = '/API/decks/';
 
-  constructor() { 
-    let deck1 = new Deck("Red Deck Wins");
-    let deck2 = new Deck ("UB Cancer");
-
-    deck1.addCard("Hazoret The Fervent");
-    deck1.addCard("Ramunap Ruins");
-    deck1.addCard("Rekindling Phoenix");
-
-    deck2.addCard("The Scarab God");
-    deck2.addCard("Fetid Pools");
-    deck2.addCard("Vraska's Contempt");
-    
-    this._decks.push(deck1);
-    this._decks.push(deck2);
+  constructor(private http: HttpClient) { 
   }
 
-  get decks() : Deck[] {
-    return this._decks;
+  get decks(): Observable<Deck[]> {
+    return this.http
+      .get(this._appUrl)
+      .pipe(
+        map((list: any[]): Deck[] =>
+          list.map(item => 
+            new Deck(item.name, item.created)
+          )
+        )
+      );
   }
 
-  addNewDeck(deck : Deck) {
-    this._decks = [...this._decks, deck];
+  addNewDeck(deck : Deck) : Observable<Deck>{
+    return this.http
+      .post(this._appUrl, deck)
+      .pipe(
+      map(
+        (item: any): Deck =>
+          new Deck(item.name, item.created)
+      )
+    );
   }
 
 }

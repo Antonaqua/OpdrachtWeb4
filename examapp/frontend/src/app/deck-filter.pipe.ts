@@ -4,12 +4,13 @@ import { Deck } from './deck/deck.model';
 @Pipe({
   name: 'deckFilter'
 })
-export class DeckFilterPipe implements PipeTransform {
-
+export class RecipeFilterPipe implements PipeTransform {
   transform(decks: Deck[], name: string): Deck[] {
-    return decks.filter(deck =>
-    deck.name.toLocaleLowerCase().startsWith(name.toLocaleLowerCase())
+    if (!name || name.length === 0) {
+      return decks;
+    }
+    return decks.filter(
+      deck => deck.name && deck.name.toLowerCase().startsWith(name.toLowerCase())
     );
   }
-
 }

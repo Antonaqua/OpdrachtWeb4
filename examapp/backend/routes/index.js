@@ -14,7 +14,7 @@ router.get('/API/decks/', function(req, res, next) {
 
 router.post('/API/decks/', function(req, res, next) {
   console.log(req.body);
-  let recipe = new Deck(req.body);
+  let deck = new Deck(req.body);
   deck.save(function(err, rec) {
     if (err) {
       return next(err);
